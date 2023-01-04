@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!-- theme meta -->
+        <title>Threat Intelligence Crawler</title>
+        <!-- ================= Favicon ================== -->
+        <link rel="shortcut icon" href="{{url_for('static', filename='images/favicon.ico')}}">
+        
+        <!-- Styles -->
+        <link rel="stylesheet" href="{{url_for('static', filename='css/bootstrap.min.css')}}">
+        <link rel="stylesheet" href="{{url_for('static', filename='css/home.css')}}">
+
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab&display=swap" rel="stylesheet"> 
+    </head>
+
+    <body>
+        <div class="s131">
+            <form class="col-12">
+                <div class="col-12 text-center mb-5">
+                    <img width="200" src="{{url_for('static', filename='images/ottawa.png')}}" alt="uottawa" class="mr-5" />
+                    <img width="200" src="{{url_for('static', filename='images/logo.png')}}" alt="eg-cert" />
+                    <h3>Threat Intelligence Web Crawler</h3>
+                </div>
+                <div class="inner-form">
+                    <div class="input-field first-wrap">
+                        <input id="search" type="text" placeholder="Keyword" />
+                    </div>
+                    <div class="input-field third-wrap">
+                        <button onclick="window.location.href='/dashboard'" class="btn-search" type="button">SEARCH</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </body>
+</html>

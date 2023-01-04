@@ -1,0 +1,168 @@
+{% extends 'layout.html' %}
+
+{% block content  %}
+
+<section id="main-content">            
+    <div class="row">
+      <div class="col-12">
+        <div class="card">
+              <!-- /# Search -->
+              <form action="{{url_for('dashboard')}}" method="post" class="row col-12 github-search">
+                <div class="form-group col-md-6 col-sm-12">
+                    <div class="input-group input-group-rounded">
+                        <input type="text" placeholder="Search by text" name="searchbody" class="form-control">
+                        <span class="input-group-btn"><button class="btn btn-primary btn-group-right" type="submit"><i class="ti-search"></i></button></span>
+                    </div>
+                </div>
+                <div class="form-group col-md-6 col-sm-12">
+                    <div class="input-group input-group-rounded">
+                        <input type="text" placeholder="Search by user" name="searchuser" class="form-control">
+                        <span class="input-group-btn"><button class="btn btn-primary btn-group-right" type="submit"><i class="ti-search"></i></button></span>
+                    </div>
+                </div>
+              </form>
+
+              <div class="card-header border-bottom-0">
+                {% if not (search or searchuser) %}
+                  <h4 class="card-title">Crawling results </h4>
+                {% elif search %}
+                  <h4 class="card-title">Crawling results to: {{search}}</h4> 
+                {% elif searchuser %}
+                  <h4 class="card-title">Crawling results to: {{searchuser}}</h4> 
+                {% endif %}
+              </div>
+              
+              <div class="card-body">
+                <!-- /# Statistics -->
+                <div class="row">
+                  <div class="col-md-6 col-sm-12">
+                      <div class="card p-0">
+                          <div class="stat-widget-three home-widget-three">
+                              <div class="stat-icon bg-twitter">
+                                  <i class="ti-twitter"></i>
+                              </div>
+                              <div class="stat-content">
+                                  <div class="stat-digit">{{count}}</div>
+                                  <div class="stat-text">Tweets Total Results</div>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+                  <div class="col-md-6 col-sm-12">
+                      <div class="card p-0">
+                          <div class="stat-widget-three home-widget-three">
+                              <div class="stat-icon bg-danger">
+                                  <i class="ti-alert"></i>
+                              </div>
+                              <div class="stat-content">
+                                  <div class="stat-digit">0</div>
+                                  <div class="stat-text">Hacker Forum Total Results</div>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+                </div>
+
+                <!-- /# List -->
+                <div class="basic-list-group">
+                    <div class="list-group">
+                      <div class="list-group-item list-group-item-action flex-column align-items-start mb-1">
+                        <div class="d-flex w-100 justify-content-between">
+                            <a  target="_blank" href="" ><h6 class="mb-1 link-hover">item['title'] ...</h6></a>
+                            <small class="text-muted">item['postDate']</small>
+                        </div>
+                        <div class="row">
+                          <div class="col-lg-10 col-12 row ">
+                            <div class="col-md-6 col-12 pt-0 pb-0">
+                              <small class="text-muted">Keywords: {{item['Keywords'] | join(", ")}}</small>
+                            </div>
+                            <div class="col-md-6 col-12 pt-0 pb-0">
+                              <small class="text-primary">Tweet Id: {{item['_id']}}</small>
+                            </div>
+                            <div class="col-md-6 col-12 pt-0 pb-0">
+                              <i class="ti-user"></i>
+                              <small class="">User name: {{item['user_screen_name']}}</small>
+                            </div>
+                            <div class="col-md-6 col-12 pt-0 pb-0">
+                              <i class="ti-key"></i>
+                              <small class="">User Id: {{item['user_id']}}</small>
+                            </div>
+                          </div>
+                          <div class="col-lg-2 col-12 p-0 home-details-btn">
+                            <a href="{{url_for('details', tweet_id=item['_id'])}}" role="button" class="col-12 btn btn-warning btn-addon m-b-10 m-l-5">
+                              <i class="ti-info"></i>Show Details
+                            </a>
+                          </div>
+                        </div>
+                      </div>
+                      {% for item in results %}
+                      <div class="list-group-item list-group-item-action flex-column align-items-start mb-1">
+                          <div class="d-flex w-100 justify-content-between">
+                              <a  target="_blank" href="{{item['url']}}" ><h6 class="mb-1 link-hover">{{(item['TweetText'])[:50]}} ...</h6></a>
+                              <small class="text-muted">{{item['created_at'].strftime("%d/%m/%Y, %I:%M:%S %p")}}</small>
+                          </div>
+                          <div class="row">
+                            <div class="col-lg-10 col-12 row ">
+                              <div class="col-md-6 col-12 pt-0 pb-0">
+                                <small class="text-muted">Keywords: {{item['Keywords'] | join(", ")}}</small>
+                              </div>
+                              <div class="col-md-6 col-12 pt-0 pb-0">
+                                <small class="text-primary">Tweet Id: {{item['_id']}}</small>
+                              </div>
+                              <div class="col-md-6 col-12 pt-0 pb-0">
+                                <i class="ti-user"></i>
+                                <small class="">User name: {{item['user_screen_name']}}</small>
+                              </div>
+                              <div class="col-md-6 col-12 pt-0 pb-0">
+                                <i class="ti-key"></i>
+                                <small class="">User Id: {{item['user_id']}}</small>
+                              </div>
+                            </div>
+                            <div class="col-lg-2 col-12 p-0 home-details-btn">
+                              <a href="{{url_for('details', tweet_id=item['_id'])}}" role="button" class="col-12 btn btn-warning btn-addon m-b-10 m-l-5">
+                                <i class="ti-info"></i>Show Details
+                              </a>
+                            </div>
+                          </div>
+                      </div>
+                      {% endfor %}
+                    </div>
+                </div>
+                
+                <!-- /# Paging -->
+                {% if total_pages > 1 %}
+                <div class="col-12 pagination-div mt-3">
+                  <ul class="pagination pagination-sm pagination-circle">
+                    <li class="page-item page-indicator page-left">
+                      {% if page_num > 1 %}
+                        <a class="page-link" href="{{url_for('dashboard', page_num = page_num-1, search=search, searchuser=searchuser)}}">
+                          <i class="ti-angle-left"></i>
+                        </a>
+                      {% else %}
+                        <a class="page-link disabled text-muted" role="link">
+                          <i class="ti-angle-left"></i>
+                        </a>
+                      {% endif %}
+                    </li>
+                    <small class="text-muted">Page {{page_num}} of {{total_pages}}</small>
+                    <li class="page-item page-indicator page-right">
+                      {% if page_num < total_pages %}
+                        <a class="page-link" href="{{url_for('dashboard', page_num = page_num+1, search=search, searchuser=searchuser)}}">
+                          <i class="ti-angle-right"></i>
+                        </a>
+                      {% else %}
+                        <a class="page-link disabled text-muted" role="link">
+                          <i class="ti-angle-right"></i>
+                        </a>
+                      {% endif %}
+                    </li>
+                  </ul>
+                </div>
+                {% endif %}
+              </div>
+          </div>
+      </div>
+    </div>
+</section>
+
+{% endblock content  %}

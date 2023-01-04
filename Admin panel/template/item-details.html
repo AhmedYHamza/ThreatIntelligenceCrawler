@@ -1,0 +1,183 @@
+{% extends 'layout.html' %}
+
+{% block content  %}
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-header border-bottom-0 d-flex keyword-header">
+                <h4 class="card-title">Tweet Details</h4>
+            </div>
+            <div class="card-body">
+                <div class="custom-tab user-profile-tab">
+                    <ul class="nav nav-tabs">
+                        <li class="text-danger">User Info</li>
+                    </ul>
+                    <div class="tab-content mb-3">
+                        <div role="tabpanel" class="tab-pane active" id="1">
+                            <div class="contact-information">
+                                <div>
+                                    <span class="contact-title">User Id:</span>
+                                    <span class="phone-number">{{item['user_id']}}</span>
+                                </div>
+                                <div>
+                                    <span class="contact-title">User name:</span>
+                                    <span class="phone-number">{{item['user_screen_name']}}</span>
+                                </div>
+                                <div>
+                                    <span class="contact-title">Location:</span>
+                                    {% if item['user_location'] != '' %}
+                                        <span class="phone-number">{{item['user_location']}}</span>
+                                    {% else %}
+                                        <span class="phone-number">No Location Specified</span>
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <ul class="nav nav-tabs">
+                        <li class="text-danger">Tweet Info</li>
+                    </ul>
+                    <div class="tab-content mb-3">
+                        <div role="tabpanel" class="tab-pane active" id="1">
+                            <div class="contact-information">
+                                <div>
+                                    <span class="contact-title">Id:</span>
+                                    <span class="phone-number">{{item['_id']}}</span>
+                                </div>
+                                <div>
+                                    <span class="contact-title">Created:</span>
+                                    <span class="phone-number">{{item['created_at'].strftime("%d/%m/%Y, %I:%M:%S %p")}}</span>
+                                </div>
+                                <div>
+                                    <span class="contact-title">Keywords</span>
+                                    <span class="phone-number">{{item['Keywords'] | join(", ")}}</span>
+                                </div>
+                                <div>
+                                    <span class="contact-title">Link:</span>
+                                    <a target="_blank" href="{{item['url']}}" class="phone-number text-primary">{{item['url']}}</a>
+                                </div>
+                                <div>
+                                    <span class="contact-title">Metadata:</span>
+                                    <span class="phone-number">{{item['Metadata']}}</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <ul class="nav nav-tabs">
+                        <li class="text-danger">Tweet Text</li>
+                    </ul>
+                    <div class="tab-content mb-3">
+                        <div role="tabpanel" class="tab-pane active" id="1">
+                            <div class="contact-information mb-3">
+                                <div class="phone-number">
+                                    {{item['TweetText']}}
+                                </div>
+                                <div>
+                                    <span class="contact-title pb-0">Payload Urls:</span>
+                                    {% if item['payload_urls'] | length > 0 %}
+                                        {% for url in item['payload_urls'] %}
+                                            <p class="phone-number"><a target="_blank" href="{{url}}" class="text-primary">{{url}}</a></p>
+                                        {% endfor %}
+                                    {% else %}
+                                        <span class="phone-number">No Payload Urls</span>
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <ul class="nav nav-tabs">
+                        <li class="text-danger">Tweet Hashtags</li>
+                    </ul>
+                    <div class="tab-content mb-3">
+                        <div role="tabpanel" class="tab-pane active" id="1">
+                            <div class="contact-information">
+                                <div>
+                                    {% if item['hashtags']|length > 0 %}
+                                        {% for hash in item['hashtags'] %}
+                                            <span class="phone-number">#{{hash['text']}} &nbsp;</span>
+                                        {% endfor %}
+                                    {% else %}
+                                        <span>No Hashtags</span>
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <ul class="nav nav-tabs">
+                        <li class="text-danger">Tweet Mentions</li>
+                    </ul>
+                    <div class="tab-content mb-3">
+                        <div role="tabpanel" class="tab-pane active" id="1">
+                            <div class="contact-information">
+                                <div class="table-responsive">
+                                    {% if item['mentions']|length > 0 %}
+                                        <table class="table table-bordered">
+                                            <thead>
+                                                <tr>
+                                                    <th scope="col">User Id</th>
+                                                    <th scope="col">User Name</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                {% for mention in item['mentions'] %}
+                                                    <tr>
+                                                        <td>{{mention['id']}}</td>
+                                                        <td>{{mention['screen_name']}}</td>
+                                                    </tr>
+                                                {% endfor %}
+                                            </tbody>
+                                        </table>
+                                    {% else %}
+                                        <span>No Mentions</span>
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <ul class="nav nav-tabs">
+                        <li class="text-danger">Tweet Retweeting</li>
+                    </ul>
+                    <div class="tab-content mb-3">
+                        <div role="tabpanel" class="tab-pane active" id="1">
+                            <div class="contact-information">
+                                <div class="table-responsive">
+                                    {% if item['retweet_info']|length > 0 %}
+                                        <table class="table table-bordered">
+                                            <thead>
+                                                <tr>
+                                                    <th scope="col">Retweet Id</th>
+                                                    <th scope="col">User Name</th>
+                                                    <th scope="col">Retweet Link</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                {% for retweet in item['retweet_info'] %}
+                                                    <tr>
+                                                        <td>{{retweet['id']}}</td>
+                                                        <td>{{retweet['user_screen_name']}}</td>
+                                                        <td><a class="text-primary" target="_blank" href="{{retweet['url']}}">{{retweet['url']}}</a></td>
+                                                    </tr>
+                                                {% endfor %}
+                                            </tbody>
+                                        </table>
+                                    {% else %}
+                                        <span>No Retweets</span>
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-12">
+                    <a class="btn btn-secondary" href="/dashboard" role="button">Back</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content  %}
