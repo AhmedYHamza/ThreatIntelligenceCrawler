@@ -258,9 +258,17 @@ password = 'AddYourPassword'
 
 driver = uc.Chrome(use_subprocess=True)
 
-url='https://sinister.ly'
-driver.get(url)
 
+try:
+    
+    url='https://sinister.ly'
+    driver.get(url)
+    
+except:
+    
+    Print("Page not reachable")
+
+    
 # login
 login(username,password,driver)
 
