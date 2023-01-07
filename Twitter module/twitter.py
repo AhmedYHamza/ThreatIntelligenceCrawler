@@ -171,6 +171,7 @@ for i in keywords:
                                         "user_id": tweet_temp.user.id,
                                         },
                      "more_details":{
+                                     "body_text": tweet_temp.full_text,
                                      "payload_urls": urls_temp,
                                      "user_location":tweet_temp.user.location,
                                      "Keywords":[i,j],
