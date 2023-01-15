@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- theme meta -->
+    <title>{{ title }}-TI Crawler</title>
+    <!-- ================= Favicon ================== -->
+    <link rel="shortcut icon" href="{{url_for('static', filename='images/favicon.ico')}}">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito&family=Roboto+Slab&display=swap" rel="stylesheet"> 
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="{{url_for('static', filename='css/bootstrap.min.css')}}">
+    <link rel="stylesheet" href="{{url_for('static', filename='css/themify-icons.css')}}">
+    <link rel="stylesheet" href="{{url_for('static', filename='css/font-awesome.min.css')}}">
+    <link rel="stylesheet" href="{{url_for('static', filename='css/sidebar.css')}}">
+    <link rel="stylesheet" href="{{url_for('static', filename='css/helper.css')}}">
+    <link rel="stylesheet" href="{{url_for('static', filename='css/owl.carousel.min.css')}}">
+    <link rel="stylesheet" href="{{url_for('static', filename='css/owl.theme.default.min.css')}}">
+    <link rel="stylesheet" href="{{url_for('static', filename='css/sweetalert.css')}}">
+    <link rel="stylesheet" href="{{url_for('static', filename='css/style.css')}}">
+</head>
+
+<body>
+    <!-- Sidebar -->
+    <div class="sidebar sidebar-hide-to-small sidebar-shrink sidebar-gestures">
+        <div class="nano">
+            <div class="nano-content">
+                <ul>
+                    <div class="logo">
+                        <a href="/">
+                            <span>
+                                <img width="" src="{{url_for('static', filename='images/ottawa.png')}}" alt="uottawa" />
+                                <img src="{{url_for('static', filename='images/logo.png')}}" alt="eg-cert" />
+                            </span>
+                        </a>
+                    </div>
+                    <li class="mb-2">
+                        <a class="sidebar-sub-toggle"><i class="ti-home"></i>
+                        Dashboard
+                        <span class="sidebar-collapse-icon ti-angle-down"></span></a>
+                        <ul>
+                            <li><a href="/dashboard">Threats</a></li>
+                            <li><a href="/credentials-dashboard">Leaked Credentials</a></li>
+                        </ul>
+                    </li>
+                    <li class="mb-2">
+                        <a class="sidebar-sub-toggle"><i class="ti-search"></i>
+                        Keywords
+                        <span class="sidebar-collapse-icon ti-angle-down"></span></a>
+                        <ul>
+                            <li><a href="keywords">Threats keywords</a></li>
+                            <li><a href="sensitive-domains">Sensitive domains</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Header -->
+    <div class="header">
+        <div class="container-fluid pb-4">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="float-left">
+                        <div class="hamburger sidebar-toggle">
+                            <span class="line"></span>
+                            <span class="line"></span>
+                            <span class="line"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Body -->
+    <div class="content-wrap">
+        <div class="main">
+            <div class="container-fluid">
+                {% block content  %}
+                {% endblock content  %}
+            </div>
+        </div>
+    </div>
+
+     <!-- footer -->
+    <div class="content-wrap">
+        <div class="row m-0">
+            <div class="col-lg-12">
+                <div class="footer">
+                    <p> Copyright © 2022, EG-CERT-National Telecom Regulatory Authority (NTRA) | University of Ottawa.  </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- jquery vendor -->
+    <script src="{{url_for('static', filename='js/jquery.min.js')}}"></script>
+    <script src="{{url_for('static', filename='js/jquery.nanoscroller.min.js')}}"></script>
+    <script src="{{url_for('static', filename='js/sidebar.js')}}"></script>
+    <script src="{{url_for('static', filename='js/bootstrap.min.js')}}"></script>
+    <script src="{{url_for('static', filename='js/sweetalert.min.js')}}"></script>
+    <script src="{{url_for('static', filename='js/scripts.js')}}"></script>
+</body>
+</html>
+

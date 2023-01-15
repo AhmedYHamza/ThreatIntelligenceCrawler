@@ -1,0 +1,247 @@
+* {
+    box-sizing: border-box;
+    
+  }
+  
+  input,
+  button {
+    font-family: 'Poppins', sans-serif;
+  }
+  
+  h1,h2,h3{
+    font-family: 'Roboto Slab', serif;
+    color: #fff;
+    font-weight: 700;
+  }
+  .s131 {
+    min-height: 100vh;
+    display: -ms-flexbox;
+    display: grid;
+    -ms-flex-pack: center;
+        /* justify-content: center; */
+    -ms-flex-align: center;
+        align-items: center;
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(0deg, rgba(30, 3, 3, 0.93), rgba(0, 0, 0, 0.9)), url(../images/Search_131.png);
+    background-size: cover;
+    background-position: center center;
+    padding: 15px;
+    justify-items: center;
+  }
+  
+  .s131 form {
+    max-width: 940px;
+    text-align: center;
+    justify-items: center;
+  }
+  
+  .s131 form .inner-form {
+    display: -ms-flexbox;
+    display: flex;
+    width: 100%;
+    -ms-flex-pack: justify;
+        justify-content: space-between;
+    -ms-flex-align: center;
+        align-items: center;
+  }
+  
+  .s131 form .inner-form .input-field {
+    height: 60px;
+  }
+  
+  .s131 form .inner-form .input-field input {
+    height: 100%;
+    background: #fff;
+    border: 0;
+    display: block;
+    width: 100%;
+    padding: 10px 32px;
+    font-size: 16px;
+    color: #333;
+    border: 1px solid #e5e5e5;
+    font-family: 'Roboto Slab', serif;
+
+  }
+  
+  .s131 form .inner-form .input-field input.placeholder {
+    color: #9a9a9a;
+    font-size: 20px;
+  }
+  
+  .s131 form .inner-form .input-field input:-moz-placeholder {
+    color: #9a9a9a;
+    font-size: 20px;
+  }
+  
+  .s131 form .inner-form .input-field input::-webkit-input-placeholder {
+    color: #9a9a9a;
+    font-size: 20px;
+  }
+  
+  .s131 form .inner-form .input-field input:hover, .s131 form .inner-form .input-field input:focus {
+    box-shadow: none;
+    outline: 0;
+  }
+  
+  .s131 form .inner-form .input-field.first-wrap {
+    -ms-flex-positive: 1;
+        flex-grow: 1;
+  }
+  
+  .s131 form .inner-form .input-field.first-wrap input {
+    border-right: 0;
+  }
+  
+  .s131 form .inner-form .input-field.second-wrap {
+    min-width: 260px;
+  }
+  
+  .s131 form .inner-form .input-field.second-wrap .choices__inner {
+    background: #fff;
+    border-radius: 0;
+    border: 1px solid #e5e5e5;
+    height: 100%;
+    color: #333;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-align: center;
+        align-items: center;
+    padding: 0 30px;
+  }
+  
+  .s131 form .inner-form .input-field.second-wrap .choices__inner .choices__list.choices__list--single {
+    display: -ms-flexbox;
+    display: flex;
+    padding: 0;
+    -ms-flex-align: center;
+        align-items: center;
+    height: 100%;
+  }
+  
+  .s131 form .inner-form .input-field.second-wrap .choices__inner .choices__item.choices__item--selectable.choices__placeholder {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-align: center;
+        align-items: center;
+    height: 100%;
+    opacity: 1;
+    color: #333;
+    font-size: 20px;
+  }
+  
+  .s131 form .inner-form .input-field.second-wrap .choices__inner .choices__list--single .choices__item {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-align: center;
+        align-items: center;
+    height: 100%;
+    font-size: 20px;
+  }
+  
+  .s131 form .inner-form .input-field.second-wrap .choices__list.choices__list--dropdown {
+    border: 0;
+    background: #fff;
+  }
+  
+  .s131 form .inner-form .input-field.second-wrap .choices__list--dropdown .choices__item--selectable.is-highlighted {
+    background: #fff;
+    color: #333;
+  }
+  
+  .s131 form .inner-form .input-field.second-wrap .choices__list--dropdown .choices__item {
+    color: #333;
+  }
+  
+  .s131 form .inner-form .input-field.second-wrap .choices__list--dropdown {
+    margin-top: 0;
+  }
+  
+  .s131 form .inner-form .input-field.third-wrap {
+    width: 164px;
+  }
+  
+  .s131 form .inner-form .input-field.third-wrap .btn-search {
+    height: 100%;
+    width: 100%;
+    white-space: nowrap;
+    font-size: 20px;
+    color: #fff;
+    border: 0;
+    cursor: pointer;
+    position: relative;
+    z-index: 0;
+    background: #bb2131ba;
+    transition: all .2s ease-out, color .2s ease-out;
+    font-weight: 300;
+    font-family: 'Roboto Slab', serif;
+
+  }
+  
+  .s131 form .inner-form .input-field.third-wrap .btn-search:hover {
+    background: #bb2131;
+  }
+  
+  .s131 form .inner-form .input-field.third-wrap .btn-search:focus {
+    outline: 0;
+    box-shadow: none;
+  }
+  
+  .s131 form .inner-form .choices[data-type*="select-one"] .choices__inner {
+    padding-bottom: 0;
+  }
+  
+  .s131 form .inner-form .choices[data-type*="select-one"]:after {
+    border: 0;
+    width: 18px;
+    height: 18px;
+    margin: 0;
+    transform: translateY(-50%);
+    opacity: 1;
+    right: 15px;
+    top: 50%;
+    background-size: 18px 18px;
+    background-position: right center;
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg fill='%23999' xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'%3e%3cpath d='M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6z'/%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+  }
+  
+  .s131 form .inner-form .choices[data-type*="select-one"].is-open:after {
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg fill='%23999' xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'%3e%3cpath d='M12 8l-6 6 1.41 1.41L12 10.83l4.59 4.58L18 14z'/%3e%3c/svg%3e");
+  }
+  
+  @media screen and (max-width: 992px) {
+    .s131 form .inner-form .input-field {
+      height: 60px;
+    }
+  }
+  
+  @media screen and (max-width: 767px) {
+    .s131 form .inner-form {
+      -ms-flex-wrap: wrap;
+          flex-wrap: wrap;
+      padding: 20px;
+    }
+    .s131 form .inner-form .input-field {
+      margin-bottom: 20px;
+    }
+    .s131 form .inner-form .input-field input {
+      padding: 10px 15px;
+    }
+    .s131 form .inner-form .input-field.first-wrap {
+      width: 100%;
+    }
+    .s131 form .inner-form .input-field.first-wrap .choices__inner {
+      padding: 10px 15px;
+    }
+    .s131 form .inner-form .input-field.second-wrap {
+      width: 100%;
+    }
+    .s131 form .inner-form .input-field.second-wrap input {
+      border: 1px solid rgba(255, 255, 255, 0.3);
+    }
+    .s131 form .inner-form .input-field.third-wrap {
+      margin-bottom: 0;
+      width: 100%;
+    }
+  }
+  
