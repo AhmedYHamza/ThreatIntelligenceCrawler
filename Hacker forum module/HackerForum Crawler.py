@@ -6,7 +6,6 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.action_chains import ActionChains
 from selenium.webdriver.common.keys import Keys
 from selenium.common.exceptions import NoSuchElementException
-from python3_anticaptcha import ImageToTextTask
 from random import randint
 import time
 from bs4 import BeautifulSoup
