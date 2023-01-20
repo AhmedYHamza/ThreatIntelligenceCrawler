@@ -37,9 +37,9 @@ def runGUI():
 
 
 # Running the crawlers and GUI in a scheduled manner
-schedule.every(10).seconds.do(runTwitterCrawler)
-schedule.every(5).to(15).seconds.do(runHackerForumCrawler)
-schedule.every(10).seconds.do(runGithubCrawler)
+schedule.every(60).minutes.do(runTwitterCrawler)
+schedule.every(30).to(90).minutes.do(runHackerForumCrawler)
+schedule.every(60).minutes.do(runGithubCrawler)
 runGUI()
 
 
