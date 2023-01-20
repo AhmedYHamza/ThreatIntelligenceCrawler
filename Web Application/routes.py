@@ -1,5 +1,4 @@
 from flask import Flask, render_template, abort, redirect, url_for
-from dbpass import mongopass 
 from pymongo import MongoClient
 from flask import request
 from flask import jsonify
@@ -8,16 +7,17 @@ from bson.objectid import ObjectId
 import math 
 import re
 import gladiator as gl
+import os
 
 app = Flask(__name__, template_folder='template')
 
 # Database Connection 
-cluster = MongoClient(mongopass)
-db = cluster["EgycertCrawler"]
-collection = db["Posts"]
-githubcollection = db["Github2"]
-keywordCollection = db["Keywords"]
-domainsCollection = db["SensitiveDomains"]
+cluster = MongoClient(os.environ['MONGO_CLIENT'])
+db = cluster[os.environ['MONGO_DB_NAME']]
+collection = db[os.environ['MONGO_POSTS_COLLECTION']]
+githubcollection = db[os.environ['MONGO_GITHUB_COLLECTION']]
+keywordCollection = db[os.environ['MONGO_KEYWORD_COLLECTION']]
+domainsCollection = db[os.environ['MONGO_DOMAINS_COLLECTION']]
 
 
 @app.route('/home')
