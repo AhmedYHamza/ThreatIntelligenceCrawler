@@ -18,7 +18,7 @@ We used Ubuntu 20.04.5 LTS in the development
 3. Install chrome 
 
 ### Set up environment variables
-You need to setup environment variables as follows
+You need to setup environment variables with the following names
 
 Name: description
 
