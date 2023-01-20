@@ -14,12 +14,13 @@ import requests
 from datetime import datetime
 import pymongo
 from pymongo import MongoClient
+import os
 
 #Defining the cluster and the collection for saving the data to the database
-cluster         = MongoClient('')
-db              = cluster["EgycertCrawler"]
-collection      = db["Github2"]
-domainscollection= db["SensitiveDomains"]
+cluster          = MongoClient(os.environ['MONGO_CLIENT'])
+db               = cluster[os.environ['MONGO_DB_NAME']]
+collection       = db[os.environ['MONGO_GITHUB_COLLECTION']]
+domainscollection= db[os.environ['MONGO_DOMAINS_COLLECTION']]
 
 # Constants
 sensitive_domains = domainscollection.find()
@@ -36,8 +37,8 @@ actions = ActionChains(driver)
 # Step1: LOGIN TO GITHUB
 driver.get('https://github.com/login')
 
-username = ''
-password = ''
+username = os.environ['GITHUB_USERNAME']
+password = os.environ['GITHUB_PASSWORD']
 
 driver.find_element("id", 'login_field').send_keys(username)
 driver.find_element("id", 'password').send_keys(password)
