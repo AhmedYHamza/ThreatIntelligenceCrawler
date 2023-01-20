@@ -12,15 +12,16 @@ import tweepy
 import pymongo
 from pymongo import MongoClient
 import time
+import os
 
 # API keyws that yous saved earlier
-api_key = "Input Twitter API key here"
-api_secrets = "Input Twitter API secret here"
-access_token = "Input access token here"
-access_secret = "Input access secret here"
+api_key = os.environ['TWITTER_API_KEY']
+api_secret = os.environ['TWITTER_API_SECRET']
+access_token = os.environ['TWITTER_ACCESS_TOKEN']
+access_secret = os.environ['TWITTER_ACCESS_SECRET']
 
 # Authenticate to Twitter
-auth = tweepy.OAuthHandler(api_key, api_secrets)
+auth = tweepy.OAuthHandler(api_key, api_secret)
 auth.set_access_token(access_token, access_secret)
 
 api = tweepy.API(auth)
@@ -36,12 +37,11 @@ egWords = ["egypt", "egy", "مصر"]
 
 
 # Open mongodb client
-cluster = MongoClient(
-    'Input the database client here')
-db = cluster["Input the name of the cluster "]
-collection = db["Input the name of the posts collection"]
-stopping_collection = db["Input the name of the collection containing the Max ID"]
-keyword_collection = db["Input the name of the keyword collection"]
+cluster = MongoClient(os.environ['MONGO_CLIENT'])
+db = cluster[os.environ['MONGO_DB_NAME']]
+collection = db[os.environ['MONGO_POSTS_COLLECTION']]
+stopping_collection = db[os.environ['MONGO_STOPPING_COLLECTION']]
+keyword_collection = db[os.environ['MONGO_KEYWORD_COLLECTION']]
 
 
 # Reading keywords from database
@@ -49,7 +49,10 @@ for i in keyword_collection.find():
   keywords.append(i['Keyword'])
 
 # Getting the id of the latest tweet that was found in the previous crawling round
-since_id=int(stopping_collection.find_one({"_id": "0001"})['since_id'])
+if(stopping_collection.find_one({"_id": "0001"})['since_id']):
+  since_id=int(stopping_collection.find_one({"_id": "0001"})['since_id'])
+else:
+  since_id=0
 
 # Empty list to store parsed tweets
 tweets = []
@@ -188,4 +191,4 @@ for i in keywords:
 # If there is a new max id push it to the database
 if(maxid>since_id):
 
-  stopping_collection.update_one({"_id": "0001"}, { "$set":{ 'since_id': str(maxid)}})
+  stopping_collection.update_one({"_id": "0001"}, { "$set":{ 'since_id': str(maxid)}}, upsert=True)
