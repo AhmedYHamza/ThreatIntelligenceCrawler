@@ -1,0 +1,100 @@
+{% extends 'layout.html' %}
+
+{% block content  %}
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-header border-bottom-0 d-flex keyword-header">
+                <h4 class="card-title">Details</h4>
+            </div>
+            <div class="card-body">
+                <div class="custom-tab user-profile-tab">
+                    <div class="tab-content mb-3">
+                        <div role="tabpanel" class="tab-pane active" id="1">
+                            <div class="contact-information">
+                                <!-- <div>
+                                    <span class="contact-title">title:</span>
+                                    <span class="phone-number">{{item['title']}}</span>
+                                </div> -->
+                                <div>
+                                    <span class="contact-title">created:</span>
+                                    <span class="phone-number">{{item['created_at'].strftime("%d/%m/%Y, %I:%M:%S %p")}}</span>
+                                </div>
+                                <div>
+                                    <span class="contact-title">url:</span>
+                                    <a target="_blank" href="{{item['url']}}" class="phone-number text-primary">{{item['url']}}</a>
+                                </div>
+                                <div>
+                                    <span class="contact-title">username:</span>
+                                    <span class="phone-number">{{item['username']}}</span>
+                                </div>
+                                {% for key,value in item['additional_info'].items() %}
+                                    <div>
+                                        <span class="contact-title">{{key}}:</span>
+                                        <span class="phone-number">{{value}}</span>
+                                    </div>
+                                {% endfor %}
+
+                                {% for key,value in item['more_details'].items() %}
+                                    {% if value is iterable and value is not string and value is not mapping %}
+                                        <div class="table-responsive">
+                                            <span class="contact-title">{{key}}:</span>
+                                            <table class="table table-bordered mb-2">
+                                                <tbody>
+                                                    {% if value|length > 0%}
+                                                        {% for val in value %}
+                                                            {% if val is iterable and val is not string %}
+                                                                <tr>
+                                                                    {% for subkey, subval in val.items() %}
+                                                                            <td>{{subkey}}</td>
+                                                                            <td class="phone-number">{{subval}}</td>
+                                                                    {% endfor %}
+                                                                </tr>
+                                                            {% else %}
+                                                                <tr>
+                                                                    <td class="phone-number">{{val}}</td>
+                                                                </tr>
+                                                            {% endif %}
+                                                        {% endfor %}
+                                                    {% else %}
+                                                        <span >Not existed</span>
+                                                    {% endif %}
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    {% elif value is mapping %}
+                                    <div class="table-responsive">
+                                        <span class="contact-title">{{key}}:</span>
+                                        <table class="table table-bordered mb-2">
+                                            <tbody>
+                                            {% for subkey, subval in value.items() %}
+                                                <td>{{subkey}}</td>
+                                                <td class="phone-number">{{subval}}</td>
+                                            {% endfor %}
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    {% else %}
+                                        <div>
+                                            <span class="contact-title">{{key}}:</span>
+                                            {% if value != '' %}
+                                                <span class="phone-number">{{value}}</span>
+                                            {% else %}
+                                                <span>Not existed</span>
+                                            {% endif %}
+                                        </div>
+                                    {% endif %}
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-12">
+                    <a class="btn btn-secondary" href="/dashboard" role="button">Back</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content  %}
