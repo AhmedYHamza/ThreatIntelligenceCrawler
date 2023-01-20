@@ -5,7 +5,7 @@ import time
 
 # A function to run twitter crawling module in a process
 def runTwitterCrawler():
-    schedule.every(10).seconds.do(exec(open("./Twitter module/twitter.py").read()))
+    schedule.every(60).minutes.do(exec(open("./Twitter module/twitter.py").read()))
     while True:
         schedule.run_pending()
         time.sleep(1)
@@ -14,7 +14,7 @@ def runTwitterCrawler():
 
 # A function to run hacker forum crawling module in a process
 def runHackerForumCrawler():
-    schedule.every(5).to(15).seconds.do(exec(open("./Hacker forum module/HackerForum Crawler.py").read()))
+    schedule.every(30).to(90).minutes.do(exec(open("./Hacker forum module/HackerForum Crawler.py").read()))
     while True:
         schedule.run_pending()
         time.sleep(1)
@@ -23,7 +23,7 @@ def runHackerForumCrawler():
 
 # A function to run github crawling module in a process
 def runGithubCrawler():
-    schedule.every(10).seconds.do(exec(open("./GitHub module/Github_Crawler.py").read()))
+    schedule.every(60).minutes.do(exec(open("./GitHub module/Github_Crawler.py").read()))
     while True:
         schedule.run_pending()
         time.sleep(1)
