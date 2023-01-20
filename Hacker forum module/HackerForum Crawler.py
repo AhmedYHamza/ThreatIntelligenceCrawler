@@ -11,6 +11,7 @@ import time
 from bs4 import BeautifulSoup
 from pymongo import MongoClient
 import pandas as pd
+import os
 
 
 
@@ -247,13 +248,13 @@ def crawl(link,driver):
 
 
 #Defining the cluster and the collection for saving the data to the database
-cluster=MongoClient('AddYourClusterLink')
-db=cluster["AddClusterName"]
-collection=db["AddCollectionName"]
+cluster=MongoClient(os.environ['MONGO_CLIENT'])
+db=cluster[os.environ['MONGO_DB_NAME']]
+collection=db[os.environ['MONGO_POSTS_COLLECTION']]
 
 # Credentials for hacker forum
-username = 'AddYourAccount' 
-password = 'AddYourPassword' 
+username = os.environ['FORUM_USERNAME']
+password = os.environ['FORUM_PASSWORD'] 
 
 driver = uc.Chrome(use_subprocess=True)
 
@@ -265,7 +266,7 @@ try:
     
 except:
     
-    Print("Page not reachable")
+    print("Page not reachable")
 
     
 # login
