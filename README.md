@@ -22,24 +22,21 @@ You need to setup environment variables as follows
 
 Name: description
 
-GITHUB_USERNAME: Your github crawling account username
-GITHUB_PASSWORD: Your github crawling account password
-
-FORUM_USERNAME: Your hacker forum crawling account username
-FORUM_PASSWORD: Your hacker forum crawling account password
-
-MONGO_CLIENT: Your mongdb client link
-MONGO_DB_NAME: Your mongdb database name
-MONGO_POSTS_COLLECTION: Your mongdb posts collection name(for twitter and the hacker forum)
-MONGO_GITHUB_COLLECTION: Your mongdb github collection name
-MONGO_KEYWORD_COLLECTION: Your mongdb keyword collection name
-MONGO_DOMAINS_COLLECTION: Your mongdb domains collection name
-MONGO_STOPPING_COLLECTION: Your mongdb MaxID collection name that has the max id for twitter in id 0001
-
-TWITTER_API_KEY: The Twitter API key
-TWITTER_API_SECRET: The Twitter API secret
-TWITTER_ACCESS_TOKEN: The Twitter access token
-TWITTER_ACCESS_SECRET: The Twitter access secret
+1. GITHUB_USERNAME: Your github crawling account username
+2. GITHUB_PASSWORD: Your github crawling account password
+3. FORUM_USERNAME: Your hacker forum crawling account username
+4. FORUM_PASSWORD: Your hacker forum crawling account password
+5. MONGO_CLIENT: Your mongdb client link
+6. MONGO_DB_NAME: Your mongdb database name
+7. MONGO_POSTS_COLLECTION: Your mongdb posts collection name(for twitter and the hacker forum)
+8. MONGO_GITHUB_COLLECTION: Your mongdb github collection name
+9. MONGO_KEYWORD_COLLECTION: Your mongdb keyword collection name
+10. MONGO_DOMAINS_COLLECTION: Your mongdb domains collection name
+11. MONGO_STOPPING_COLLECTION: Your mongdb MaxID collection name that has the max id for twitter in id 0001
+12. TWITTER_API_KEY: The Twitter API key
+13. TWITTER_API_SECRET: The Twitter API secret
+14. TWITTER_ACCESS_TOKEN: The Twitter access token
+15. TWITTER_ACCESS_SECRET: The Twitter access secret
 
 ### Run the code
 1. Install requirements (pip3 install -r requirements.txt)
