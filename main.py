@@ -1,50 +1,44 @@
-from threading import Thread
+from multiprocessing import Process
 import schedule
 import time
 
 
-# A function to run twitter crawling module in a thread
+# A function to run twitter crawling module in a process
 def runTwitterCrawler():
-
-    twitter_thread = Thread(target = exec(open("./Twitter module/twitter.py").read()))
-    twitter_thread.start()
+    schedule.every(10).seconds.do(exec(open("./Twitter module/twitter.py").read()))
+    while True:
+        schedule.run_pending()
+        time.sleep(1)
  
 
 
-# A function to run hacker forum crawling module in a thread
+# A function to run hacker forum crawling module in a process
 def runHackerForumCrawler():
+    schedule.every(5).to(15).seconds.do(exec(open("./Hacker forum module/HackerForum Crawler.py").read()))
+    while True:
+        schedule.run_pending()
+        time.sleep(1)
 
-    hacker_forum_thread = Thread(target = exec(open("./Hacker forum module/HackerForum Crawler.py").read()))
-    hacker_forum_thread.start()
 
 
-
-# A function to run github crawling module in a thread
+# A function to run github crawling module in a process
 def runGithubCrawler():
-
-    github_thread = Thread(target = exec(open("./GitHub module/Github_Crawler.py").read()))
-    github_thread.start()
+    schedule.every(10).seconds.do(exec(open("./GitHub module/Github_Crawler.py").read()))
+    while True:
+        schedule.run_pending()
+        time.sleep(1)
 
 
  
-# A function to run the GUI in a thread
+# A function to run the GUI in a process
 def runGUI():
-
-    gui_thread = Thread(target = exec(open("./Web Application/routes.py").read()))
-    gui_thread.start()
+    exec(open("./Web Application/routes.py").read())
 
 
 
 
 # Running the crawlers and GUI in a scheduled manner
-schedule.every(60).minutes.do(runTwitterCrawler)
-schedule.every(30).to(90).minutes.do(runHackerForumCrawler)
-schedule.every(60).minutes.do(runGithubCrawler)
-runGUI()
-
-
-# A loop to keep the code running and searching for pending runs
-while True:
-    schedule.run_pending()
-    time.sleep(1)
-
+Process(target = runTwitterCrawler,args=()).start()
+Process(target = runHackerForumCrawler,args=()).start()
+Process(target = runGithubCrawler,args=()).start()
+exec(open("./routes.py").read())
