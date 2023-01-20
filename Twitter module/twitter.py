@@ -14,7 +14,7 @@ from pymongo import MongoClient
 import time
 import os
 
-# API keyws that yous saved earlier
+# API keys that yous saved earlier
 api_key = os.environ['TWITTER_API_KEY']
 api_secret = os.environ['TWITTER_API_SECRET']
 access_token = os.environ['TWITTER_ACCESS_TOKEN']
