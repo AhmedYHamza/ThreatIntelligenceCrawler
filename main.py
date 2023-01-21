@@ -1,11 +1,12 @@
 from multiprocessing import Process
+import HackerForumCrawler
 import schedule
 import time
 
 
 # A function to run twitter crawling module in a process
 def runTwitterCrawler():
-    schedule.every(60).minutes.do(exec(open("./Twitter module/twitter.py").read()))
+    schedule.every(60).minutes.do(exec,(open("./twitter.py").read()))
     while True:
         schedule.run_pending()
         time.sleep(1)
@@ -14,7 +15,7 @@ def runTwitterCrawler():
 
 # A function to run hacker forum crawling module in a process
 def runHackerForumCrawler():
-    schedule.every(30).to(90).minutes.do(exec(open("./Hacker forum module/HackerForum Crawler.py").read()))
+    schedule.every(30).to(90).minutes.do(HackerForumCrawler.main)
     while True:
         schedule.run_pending()
         time.sleep(1)
@@ -23,16 +24,10 @@ def runHackerForumCrawler():
 
 # A function to run github crawling module in a process
 def runGithubCrawler():
-    schedule.every(60).minutes.do(exec(open("./GitHub module/Github_Crawler.py").read()))
+    schedule.every(60).minutes.do(exec,(open("./Github_Crawler.py").read()))
     while True:
         schedule.run_pending()
         time.sleep(1)
-
-
- 
-# A function to run the GUI in a process
-def runGUI():
-    exec(open("./Web Application/routes.py").read())
 
 
 
