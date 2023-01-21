@@ -240,4 +240,4 @@ def validate_search(searchtext):
     return gl.validate((gl.required, gl.type_(str), gl.regex_('[a-zA-Z][0-9a-zA-Z\-\. ]+')), searchtext).success
     
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(debug=False)
