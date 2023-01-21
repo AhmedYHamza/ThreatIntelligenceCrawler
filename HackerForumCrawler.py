@@ -15,6 +15,17 @@ import os
 
 
 
+#Defining the cluster and the collection for saving the data to the database
+cluster=MongoClient(os.environ['MONGO_CLIENT'])
+db=cluster[os.environ['MONGO_DB_NAME']]
+collection=db[os.environ['MONGO_POSTS_COLLECTION']]
+
+# Credentials for hacker forum
+username = os.environ['FORUM_USERNAME']
+password = os.environ['FORUM_PASSWORD'] 
+
+
+
 def smartScroll(page_height,driver,start=0):
 
     tmp=start
@@ -247,36 +258,27 @@ def crawl(link,driver):
 
 
 
-#Defining the cluster and the collection for saving the data to the database
-cluster=MongoClient(os.environ['MONGO_CLIENT'])
-db=cluster[os.environ['MONGO_DB_NAME']]
-collection=db[os.environ['MONGO_POSTS_COLLECTION']]
-
-# Credentials for hacker forum
-username = os.environ['FORUM_USERNAME']
-password = os.environ['FORUM_PASSWORD'] 
-
-driver = uc.Chrome(use_subprocess=True)
-
-
-try:
+def main():
+    driver = uc.Chrome(use_subprocess=True)
     
-    url='https://sinister.ly'
-    driver.get(url)
-    
-except:
-    
-    print("Page not reachable")
+    try:
+        
+        url='https://sinister.ly'
+        driver.get(url)
+        
+    except:
+        
+        print("Page not reachable")
 
-    
-# login
-login(username,password,driver)
+        
+    # login
+    login(username,password,driver)
 
-# Execute search for a keyword
-search("canada",driver)
+    # Execute search for a keyword
+    search("canada",driver)
 
-# Find the links
-links=[]
-findLinks(collection,links,driver)
+    # Find the links
+    links=[]
+    findLinks(collection,links,driver)
 
-time.sleep(10)
+    time.sleep(10)
